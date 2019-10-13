@@ -65,103 +65,103 @@ class TestHashTable(unittest.TestCase):
         self.assertEqual(1, h.hash(34))
         self.assertEqual(hash("fake key") % 33, h.hash("fake key"))
 
-    # """
-    # Data Storage
-    # """
+    """
+    Data Storage
+    """
 
-    # def test_data(self):
-    #     """
-    #     A HashTable has an internal array for storing k-v pairs.
-    #     """
-    #     h = HashTable()
-    #     self.assertEqual(list, type(h.data))
+    def test_data(self):
+        """
+        A HashTable has an internal array for storing k-v pairs.
+        """
+        h = HashTable()
+        self.assertEqual(list, type(h.data))
 
-    # def test_data_contents(self):
-    #     """
-    #     A HashTable data array contains empty lists.
-    #     """
-    #     h = HashTable(3)
-    #     expected = [ [], [], [] ]
-    #     self.assertEqual(expected, h.data)
+    def test_data_contents(self):
+        """
+        A HashTable data array contains empty lists.
+        """
+        h = HashTable(3)
+        expected = [ [], [], [] ]
+        self.assertEqual(expected, h.data)
 
-    # """
-    # Insertion Basics
-    # """
+    """
+    Insertion Basics
+    """
 
-    # def test_insert_one(self):
-    #     """
-    #     Inserting a k-v pair stores it as a two-element array in the list at
-    #     the right index.
-    #     """
-    #     h = HashTable(3)
-    #     h[11] = 'bar' # 11 is the key, not an index :)
-    #     self.assertEqual([[11, 'bar']], h.data[2])
+    def test_insert_one(self):
+        """
+        Inserting a k-v pair stores it as a two-element array in the list at
+        the right index.
+        """
+        h = HashTable(3)
+        h[11] = 'bar' # 11 is the key, not an index :)
+        self.assertEqual([[11, 'bar']], h.data[2])
 
-    # """
-    # Retrieval Basics
-    # """
+    """
+    Retrieval Basics
+    """
 
-    # def test_retrieve_none(self):
-    #     """
-    #     Retreiving a value for non-existent key returns None.
-    #     """
-    #     h = HashTable(3)
-    #     self.assertEqual(None, h['foo'])
+    def test_retrieve_none(self):
+        """
+        Retreiving a value for non-existent key returns None.
+        """
+        h = HashTable(3)
+        self.assertEqual(None, h['foo'])
 
-    # def test_retrieve_one(self):
-    #     """
-    #     The value of an inserted k-v pair is retrievable.
-    #     """
-    #     h = HashTable(3)
-    #     h['foo'] = 'bar'
-    #     self.assertEqual('bar', h['foo'])
+    def test_retrieve_one(self):
+        """
+        The value of an inserted k-v pair is retrievable.
+        """
+        h = HashTable(3)
+        h['foo'] = 'bar'
+        self.assertEqual('bar', h['foo'])
 
-    # """
-    # Insertion
-    # """
+    """
+    Insertion
+    """
 
-    # def test_insert_two(self):
-    #     """
-    #     Inserting two k-v pairs stores them as two-element arrays in the list
-    #     at the right index.
-    #     """
-    #     h = HashTable(3)
-    #     h[9] = 'foo' # Using numbers as keys for visibility.
-    #     h[11] = 'bar'
-    #     self.assertEqual([[9, 'foo']], h.data[0])
-    #     self.assertEqual([[11, 'bar']], h.data[2])
+    def test_insert_two(self):
+        """
+        Inserting two k-v pairs stores them as two-element arrays in the list
+        at the right index.
+        """
+        h = HashTable(3)
+        h[9] = 'foo' # Using numbers as keys for visibility.
+        h[11] = 'bar'
+        self.assertEqual([[9, 'foo']], h.data[0])
+        self.assertEqual([[11, 'bar']], h.data[2])
 
-    # def test_insert_existing(self):
-    #     """
-    #     Inserting a k-v pair where the key already exists overwrites the old value.
-    #     """
-    #     h = HashTable(3)
-    #     h[9] = 'foo' # Using numbers as keys for visibility.
-    #     h[9] = 'bar'
-    #     self.assertEqual([[9, 'bar']], h.data[0])
+    def test_insert_existing(self):
+        """
+        Inserting a k-v pair where the key already exists overwrites the old value.
+        """
+        h = HashTable(3)
+        h[9] = 'foo' # Using numbers as keys for visibility.
+        h[9] = 'bar'
+        self.assertEqual([[9, 'bar']], h.data[0])
 
-    # def test_insert_collision(self):
-    #     """
-    #     Inserting a k-v pair where the key has the same hash as an existing key
-    #     appends the new k-v pair to the list at the appropriate index.
-    #     """
-    #     h = HashTable(3)
-    #     h[9] = 'foo'
-    #     h[3] = 'bar'
-    #     self.assertEqual([[9, 'foo'], [3, 'bar']], h.data[0])
+    def test_insert_collision(self):
+        """
+        Inserting a k-v pair where the key has the same hash as an existing key
+        appends the new k-v pair to the list at the appropriate index.
+        """
+        h = HashTable(3)
+        h[9] = 'foo'
+        h[3] = 'bar'
+        self.assertEqual([[9, 'foo'], [3, 'bar']], h.data[0])
 
-    # """
-    # Deletion
-    # """
+    """
+    Deletion
+    """
 
-    # def test_delete(self):
-    #     """
-    #     A deleted k-v pair should not be retrievable.
-    #     """
-    #     h = HashTable(3)
-    #     h['foo'] = 'bar'
-    #     h.delete('foo')
-    #     self.assertEqual(None, h['foo'])
+    def test_delete(self):
+        """
+        A deleted k-v pair should not be retrievable.
+        """
+        h = HashTable(3)
+        h['foo'] = 'bar'
+        h.delete('foo')
+        self.assertEqual(None, h['foo'])
 
     # """
     # Misc. Methods
