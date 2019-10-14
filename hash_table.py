@@ -8,7 +8,11 @@ class HashTable:
 
     def __init__(self, size=10):
         self.size = size
-        self.data = [ [] for i in range(self.size)]     
+        self.data = [ [] for i in range(self.size)]    
+        self.keys = [ [] for i in range(self.size)] 
+    
+    # def keys(self):
+    #     self.keys = [ [] for i in range (self.size)]
 
     def hash(self, key):
         size = (self.size)
@@ -33,7 +37,13 @@ class HashTable:
             if k[0] == key: #if k equals key we are looking for, the key sent into the method
                 return k[1]
 
-    # def delete(self, key, value):
+    def delete(self, key):
+        key_hash = self.hash(key)
+        for i in range (0, len(self.data[key_hash])):
+            if self.data[key_hash][i][0] == key:
+                self.data[key_hash].pop(i)
 
     def clear(self):
-        
+        for i in range (0, len(self.data)):
+            self.data = [ [] for i in range(self.size)]
+
